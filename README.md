@@ -44,6 +44,6 @@ Example flixer template can be found in example/ directory.
 **TODOS**
 - We need more testing.
 - Different input support and more output support strategy
-- Documentation needs to be some improvement :D
+- Maybe automatic template generation?!
 
 If you want to contribute with any idea or code feel free to send me an e-mail via me@batikansenemoglu.com or pull request.
