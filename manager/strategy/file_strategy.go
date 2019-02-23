@@ -16,7 +16,7 @@ func (fs FileStrategy) Process(values string) {
 
 	w := bufio.NewWriter(f)
 
-	fmt.Fprintf(w, values)
+	fmt.Fprintf(w, fmt.Sprintf("%s\n", values))
 	w.Flush()
 }
 
