@@ -8,7 +8,7 @@
 This project strongly inspired from Google Cloud Engine - Command Line Interface.
 Purpose of the this project provide bridge between CLI and Web UI therefore ensure more user friendly CLI Prompts.
 
-**Installion:**
+**installation:**
 
 If you define your `$GOPATH` and `$GOBIN` variables and `$GOBIN` in your `$PATH` then very simple;
 
