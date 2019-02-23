@@ -9,4 +9,5 @@ type Config struct {
 	Routes   RouteDefinitions
 	Template string
 	Port     string
+	Url      string
 }
