@@ -18,8 +18,10 @@ func (fs FileStrategy) Process(values url.Values) {
 	w := bufio.NewWriter(f)
 
 	for key, value := range values {
-		fmt.Fprintf(w, "%s:%s\n", key, value)
+		fmt.Fprintf(w, "%s:%s\n", key, value[0])
 	}
+
+	w.Flush()
 }
 
 func NewFileStrategy(filename string) OutputStrategy {

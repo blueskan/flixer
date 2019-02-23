@@ -9,7 +9,7 @@ type StdOutStrategy struct{}
 
 func (sos StdOutStrategy) Process(values url.Values) {
 	for key, value := range values {
-		fmt.Printf("%s:%s\n", key, value)
+		fmt.Printf("%s:%s\n", key, value[0])
 	}
 }
 
