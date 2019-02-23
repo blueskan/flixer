@@ -10,7 +10,7 @@ Purpose of the this project provide bridge between CLI and Web UI therefore ensu
 
 **Installion:**
 
-If you define your `$GOPATH` and `$GOBIN` variables and `$GOBIN` in your `$PATH` then very simle;
+If you define your `$GOPATH` and `$GOBIN` variables and `$GOBIN` in your `$PATH` then very simple;
 
 `go get -u github.com/blueskan/flixer`
 
