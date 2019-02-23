@@ -5,6 +5,8 @@ import (
 	"github.com/skratchdot/open-golang/open"
 )
 
+var openBrowser = open.Run
+
 type Manager interface {
 	OpenInBrowser(url string)
 	FinishProcess(obtainInputsCh <-chan string)
@@ -15,7 +17,7 @@ type manager struct {
 }
 
 func (m manager) OpenInBrowser(url string) {
-	open.Run(url)
+	openBrowser(url)
 }
 
 func (m manager) FinishProcess(obtainInputsCh <-chan string) {
