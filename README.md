@@ -14,7 +14,7 @@ For example you build node application and ask some questions to user in CLI you
 
 ```js
 const { spawn } = require('child_process');
-// Remember run without absolute path flixer should be placed in your operating system $PATH
+// Remember run without absolute path, flixer executable should be placed in your operating system $PATH
 const flixerDoSomeAwesomeThink = spawn('flixer', ['run', 'stdout', '--template=./example/flixer.html']);
 
 flixerDoSomeAwesomeThink.stdout.on('data', (data) => {
