@@ -8,6 +8,17 @@
 This project strongly inspired from Google Cloud Engine - Command Line Interface.
 Purpose of the this project provide bridge between CLI and Web UI therefore ensure more user friendly CLI Prompts.
 
+**Installion:**
+
+If you define your $GOPATH and $GOBIN variables and $GOBIN in your $PATH then very simle;
+`go get -u github.com/blueskan/flixer`
+and you can run anywhere with typing `flixer run ...`
+
+Otherwise you can compile code yourself and build executable..
+Example flixer template can be found in `example/` directory.
+
+---
+
 For example you build node application and ask some questions to user in CLI you can pipe your process to flixer and flixer automatically open browser (completely cross platform) and http server for you (actually serve your predefined html template) and after send post request to predefined post url you can send to user input directly stdout and redirect your main process or write file and read after (Currently support this 2 strategies). Also after this stage process die with gracefully.
 
 **Node.JS Example**
@@ -38,14 +49,6 @@ I will plan adds more output modes in days to come.
 **Quick Demo:**
 
 ![demo](https://raw.githubusercontent.com/blueskan/flixer/master/example/demo.gif)
-
-**Installion:**
-If you define your $GOPATH and $GOBIN variables and $GOBIN in your $PATH then very simle;
-`go get -u github.com/blueskan/flixer`
-and you can run anywhere with typing `flixer run ...`
-
-Otherwise you can compile code yourself and build executable..
-Example flixer template can be found in `example/` directory.
 
 **TODOS**
 - We need more testing.
