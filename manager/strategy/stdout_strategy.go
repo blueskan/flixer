@@ -2,15 +2,12 @@ package strategy
 
 import (
 	"fmt"
-	"net/url"
 )
 
 type StdOutStrategy struct{}
 
-func (sos StdOutStrategy) Process(values url.Values) {
-	for key, value := range values {
-		fmt.Printf("%s:%s\n", key, value[0])
-	}
+func (sos StdOutStrategy) Process(values string) {
+	fmt.Println(values)
 }
 
 func NewStdOutStrategy() OutputStrategy {

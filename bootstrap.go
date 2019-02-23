@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"net/url"
 
 	"github.com/blueskan/flixer/manager/strategy"
 
@@ -16,7 +15,7 @@ func bootstrap(
 	filename string,
 	config config.Config,
 ) {
-	obtainInputsCh := make(chan url.Values)
+	obtainInputsCh := make(chan string)
 
 	routes := http.NewFlixerRoutes(obtainInputsCh)
 	server := http.NewFlixerHttpServer(routes, config)

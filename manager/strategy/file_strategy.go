@@ -3,7 +3,6 @@ package strategy
 import (
 	"bufio"
 	"fmt"
-	"net/url"
 	"os"
 )
 
@@ -11,16 +10,13 @@ type FileStrategy struct {
 	filename string
 }
 
-func (fs FileStrategy) Process(values url.Values) {
+func (fs FileStrategy) Process(values string) {
 	f, _ := os.Create(fs.filename)
 	defer f.Close()
 
 	w := bufio.NewWriter(f)
 
-	for key, value := range values {
-		fmt.Fprintf(w, "%s:%s\n", key, value[0])
-	}
-
+	fmt.Fprintf(w, values)
 	w.Flush()
 }
 

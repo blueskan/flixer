@@ -1,15 +1,13 @@
 package manager
 
 import (
-	"net/url"
-
 	"github.com/blueskan/flixer/manager/strategy"
 	"github.com/skratchdot/open-golang/open"
 )
 
 type Manager interface {
 	OpenInBrowser(url string)
-	FinishProcess(obtainInputsCh <-chan url.Values)
+	FinishProcess(obtainInputsCh <-chan string)
 }
 
 type manager struct {
@@ -20,7 +18,7 @@ func (m manager) OpenInBrowser(url string) {
 	open.Run(url)
 }
 
-func (m manager) FinishProcess(obtainInputsCh <-chan url.Values) {
+func (m manager) FinishProcess(obtainInputsCh <-chan string) {
 	inputs := <-obtainInputsCh
 
 	m.strategy.Process(inputs)

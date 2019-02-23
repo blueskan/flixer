@@ -3,8 +3,8 @@ package http
 import (
 	"fmt"
 	"html/template"
+	"io/ioutil"
 	"net/http"
-	"net/url"
 )
 
 type FlixerRoutes interface {
@@ -13,7 +13,7 @@ type FlixerRoutes interface {
 }
 
 type flixerRoutes struct {
-	obtainInputsCh chan<- url.Values
+	obtainInputsCh chan<- string
 }
 
 func (fr *flixerRoutes) DefineRouteForRenderTemplate(route string, templatePath string) error {
@@ -33,9 +33,9 @@ func (fr *flixerRoutes) DefineRouteForRenderTemplate(route string, templatePath 
 func (fr *flixerRoutes) DefineRouteForObtainInputs(route string) {
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		postGuard(w, r)
-		r.ParseForm()
 
-		fr.obtainInputsCh <- r.PostForm
+		body, _ := ioutil.ReadAll(r.Body)
+		fr.obtainInputsCh <- string(body)
 
 		w.WriteHeader(http.StatusAccepted)
 	}
@@ -51,7 +51,7 @@ func postGuard(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func NewFlixerRoutes(obtainInputsCh chan<- url.Values) FlixerRoutes {
+func NewFlixerRoutes(obtainInputsCh chan<- string) FlixerRoutes {
 	return &flixerRoutes{
 		obtainInputsCh: obtainInputsCh,
 	}
