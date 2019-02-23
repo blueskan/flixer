@@ -4,13 +4,18 @@ import (
 	"fmt"
 	"net/url"
 
+	"github.com/blueskan/flixer/manager/strategy"
+
 	"github.com/blueskan/flixer/config"
 	"github.com/blueskan/flixer/http"
 	"github.com/blueskan/flixer/manager"
-	"github.com/blueskan/flixer/manager/strategy"
 )
 
-func bootstrap(config config.Config) {
+func bootstrap(
+	strategyChoose string,
+	filename string,
+	config config.Config,
+) {
 	obtainInputsCh := make(chan url.Values)
 
 	routes := http.NewFlixerRoutes(obtainInputsCh)
@@ -18,7 +23,12 @@ func bootstrap(config config.Config) {
 
 	server.Start()
 
-	outputStrategy := strategy.NewStdOutStrategy()
+	strategyFactory := strategy.NewStrategyFactory()
+	outputStrategy, err := strategyFactory.GetStrategy(strategyChoose, filename)
+	if err != nil {
+		panic(err)
+	}
+
 	manager := manager.NewManager(outputStrategy)
 
 	manager.OpenInBrowser(fmt.Sprintf(

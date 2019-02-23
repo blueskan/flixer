@@ -14,7 +14,7 @@ func main() {
 	}
 
 	runCmd := &cobra.Command{
-		Use:   "run [strategy]",
+		Use:   "run [stdout|file]",
 		Short: "Hey flixer do all magic for me",
 		PreRunE: func(cmd *cobra.Command, args []string) error {
 			if len(args) < 1 {
@@ -24,11 +24,14 @@ func main() {
 			return nil
 		},
 		Run: func(cmd *cobra.Command, args []string) {
+			strategyChoose := args[0]
+
 			port, _ := cmd.Flags().GetString("port")
 			template, _ := cmd.Flags().GetString("template")
 			renderPath, _ := cmd.Flags().GetString("render-path")
 			obtainPath, _ := cmd.Flags().GetString("obtain-path")
 			url, _ := cmd.Flags().GetString("url")
+			outputFilename, _ := cmd.Flags().GetString("output-filename")
 
 			config := config.Config{
 				Port:     port,
@@ -40,7 +43,7 @@ func main() {
 				Url: url,
 			}
 
-			bootstrap(config)
+			bootstrap(strategyChoose, outputFilename, config)
 		},
 	}
 
@@ -49,6 +52,7 @@ func main() {
 	runCmd.PersistentFlags().String("render-path", "/", "Rendering path for get")
 	runCmd.PersistentFlags().String("obtain-path", "/obtain", "Obtain path for post")
 	runCmd.PersistentFlags().String("url", "http://localhost", "Url which open by browser")
+	runCmd.PersistentFlags().String("output-filename", "flixer_output", "If you choose file strategy this is output filename, otherwise ignored")
 
 	rootCmd.AddCommand(runCmd)
 	rootCmd.Execute()
