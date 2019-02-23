@@ -32,14 +32,20 @@ We are currently support just 2 Output Modes:  `stdout | file`
 I will plan adds more output modes in days to come.
 
 **All available options below:**
+
 ![cli flags etc](https://raw.githubusercontent.com/blueskan/flixer/master/example/cli.png)
 
 **Quick Demo:**
+
 ![demo](https://raw.githubusercontent.com/blueskan/flixer/master/example/demo.gif)
 
 **Installion:**
-You can install flixer via git or go get and build yourself.
-Example flixer template can be found in example/ directory.
+If you define your $GOPATH and $GOBIN variables and $GOBIN in your $PATH then very simle;
+`go get -u github.com/blueskan/flixer`
+and you can run anywhere with typing `flixer run ...`
+
+Otherwise you can compile code yourself and build executable..
+Example flixer template can be found in `example/` directory.
 
 **TODOS**
 - We need more testing.
